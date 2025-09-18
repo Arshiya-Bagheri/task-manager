@@ -24,7 +24,7 @@ You can run it either via **Python source** or as a **prebuilt Windows `.exe`**.
 
 ## Project Inspiration / Roadmap Idea
 
-This Task Manager CLI was inspired by a project idea listed on [Roadmap.sh](https://roadmap.sh/projects/task-tracker).  
+This Task Manager CLI was inspired by a project idea listed on [Roadmap.sh](https://roadmap.sh).  
 You can check the original idea for reference and further inspiration here: [Task Tracker Idea](https://roadmap.sh/projects/task-tracker).
 
 ---
