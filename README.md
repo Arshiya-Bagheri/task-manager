@@ -51,7 +51,7 @@ pip install -r requirements.txt
 ### Option 2: Using prebuilt Windows `.exe`
 
 1. Navigate to the `dist/` folder.  
-2. Use `task-cli.exe` directly without installing Python.
+2. Use `task-manager.exe` directly without installing Python.
 
 ---
 
@@ -66,7 +66,7 @@ Run the CLI:
 python -m task_manager.cli
 
 # From Windows .exe
-task-cli.exe
+task-manager.exe
 ```
 
 You will see an interactive prompt:
@@ -75,16 +75,16 @@ You will see an interactive prompt:
 👋 Welcome to Task Manager CLI!
 Type 'help' to see available commands, 'exit' to quit.
 
-task-cli>
+task-manager>
 ```
 
 Now you can type commands directly, e.g.:
 
 ```
-task-cli> add Buy groceries
-task-cli> list
-task-cli> mark-done 1
-task-cli> exit
+task-manager> add Buy groceries
+task-manager> list
+task-manager> mark-done 1
+task-manager> exit
 ```
 
 > Each command executes immediately, and the prompt remains until you type `exit`.
@@ -155,7 +155,7 @@ task-manager/
 │   └─ test_cli.py      # Pytest test cases
 │
 ├─ dist/                # Compiled Windows .exe
-│   └─ task-cli.exe
+│   └─ task-manager.exe
 │
 ├─ requirements.txt     # Python dependencies
 └─ README.md
