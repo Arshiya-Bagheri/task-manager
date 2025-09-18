@@ -25,7 +25,7 @@ Designed with **cross-platform compatibility**, optional emoji support, and **fu
 
 ```
 git clone https://github.com/Arshiya-Bagheri/task-manager.git
-cd task-tracker
+cd task_manager
 ```
 
 2. Create a virtual environment (recommended):
@@ -181,7 +181,7 @@ USE_EMOJI=0 pytest -v
 ## Project Structure
 
 ```
-task_tracker/
+task-manager/
 │
 ├─ task_manager/
 │   └─ cli.py           # Main CLI application
