@@ -30,7 +30,7 @@ You can run it either via **Python source** or as a **prebuilt Windows `.exe`**.
 
 ```
 git clone https://github.com/Arshiya-Bagheri/task-manager.git
-cd task-manager
+cd task_manager
 ```
 
 2. Create a virtual environment (recommended):
