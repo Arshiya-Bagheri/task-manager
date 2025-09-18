@@ -5,6 +5,8 @@ Supports **adding, updating, deleting, marking, and listing tasks** with **persi
 
 Designed with **cross-platform compatibility**, optional emoji support, and **fully tested** with `pytest`.  
 
+You can run it either via **Python source** or as a **prebuilt Windows `.exe`**.
+
 ---
 
 ## Features
@@ -16,16 +18,19 @@ Designed with **cross-platform compatibility**, optional emoji support, and **fu
 - Emoji support for task statuses (can be disabled for Windows)  
 - Persistent storage in JSON (`tasks.json`)  
 - Fully tested using `pytest`  
+- Interactive CLI prompt for multiple commands in one session
 
 ---
 
 ## Installation
 
+### Option 1: Using Python (source)
+
 1. Clone the repository:
 
 ```
 git clone https://github.com/Arshiya-Bagheri/task-manager.git
-cd task_manager
+cd task-manager
 ```
 
 2. Create a virtual environment (recommended):
@@ -43,108 +48,67 @@ venv\Scripts\activate      # Windows
 pip install -r requirements.txt
 ```
 
+### Option 2: Using prebuilt Windows `.exe`
+
+1. Navigate to the `dist/` folder.  
+2. Use `task-cli.exe` directly without installing Python.
+
 ---
 
 ## Usage
 
-Run the CLI using:
+### Interactive CLI (`.exe` or Python source)
+
+Run the CLI:
 
 ```
-python -m task_manager.cli <command> [arguments]
+# From Python source
+python -m task_manager.cli
+
+# From Windows .exe
+task-cli.exe
 ```
 
-> Replace `<command>` with one of the available commands listed below.
+You will see an interactive prompt:
+
+```
+👋 Welcome to Task Manager CLI!
+Type 'help' to see available commands, 'exit' to quit.
+
+task-cli>
+```
+
+Now you can type commands directly, e.g.:
+
+```
+task-cli> add Buy groceries
+task-cli> list
+task-cli> mark-done 1
+task-cli> exit
+```
+
+> Each command executes immediately, and the prompt remains until you type `exit`.
 
 ---
 
 ## Commands & Examples
 
-### 1. Add a task
-
-Adds a new task with a description.
-
-```
-python -m task_manager.cli add "Buy groceries"
-```
-
-Output example:
-
-```
-✅ Task added successfully (ID: 1)
-```
-
-### 2. Update a task
-
-Updates an existing task by its ID.
-
-```
-python -m task_manager.cli update 1 "Buy groceries and fruits"
-```
-
-Output example:
-
-```
-✏️ Task 1 updated.
-```
-
-### 3. Delete a task
-
-Deletes a task by ID.
-
-```
-python -m task_manager.cli delete 1
-```
-
-Output example:
-
-```
-🗑️ Task 1 deleted.
-```
-
-### 4. Mark task as in-progress
-
-```
-python -m task_manager.cli mark-in-progress 1
-```
-
-Output example:
-
-```
-✅ Task 1 marked as in-progress.
-```
-
-### 5. Mark task as done
-
-```
-python -m task_manager.cli mark-done 1
-```
-
-Output example:
-
-```
-✅ Task 1 marked as done.
-```
-
-### 6. List tasks
-
-List tasks with optional status filter (`all`, `done`, `in-progress`).
-
-```
-# List all tasks
-python -m task_manager.cli list
-
-# List only completed tasks
-python -m task_manager.cli list done
-
-# List only in-progress tasks
-python -m task_manager.cli list in-progress
-```
+| Command | Description | Example |
+|---------|-------------|---------|
+| `add <description>` | Add a new task | `add Buy groceries` |
+| `update <id> <desc>` | Update a task by ID | `update 1 Buy milk and eggs` |
+| `delete <id>` | Delete a task by ID | `delete 1` |
+| `mark-in-progress <id>` | Mark task as in-progress | `mark-in-progress 1` |
+| `mark-done <id>` | Mark task as done | `mark-done 1` |
+| `list [status]` | List tasks (`todo`, `in-progress`, `done`) | `list done` |
+| `help` | Show commands reference | `help` |
+| `exit` | Exit the CLI | `exit` |
 
 Example output:
 
 ```
-1. Buy groceries - in-progress
-2. Finish project - done
+[1] Buy groceries - in-progress
+[2] Finish project - done
 ```
 
 ---
@@ -152,9 +116,10 @@ Example output:
 ### Environment Variables
 
 - **`USE_EMOJI=0`**  
-  Disables emojis if your terminal cannot display them (common in Windows).  
+  Disable emojis if your terminal cannot display them (common in Windows).
 
 ```
+# Example
 USE_EMOJI=0 python -m task_manager.cli add "Test task"
 ```
 
@@ -169,8 +134,8 @@ pytest -v
 ```
 
 - Tests cover all CLI commands: add, update, delete, mark, and list tasks.  
-- Temporary JSON files are used for testing so your real data is safe.  
-- Emoji output is disabled in tests by setting:
+- Temporary JSON files are used for testing, so real data is safe.  
+- Emoji output is disabled in tests using:
 
 ```
 USE_EMOJI=0 pytest -v
@@ -189,6 +154,9 @@ task-manager/
 ├─ tests/
 │   └─ test_cli.py      # Pytest test cases
 │
+├─ dist/                # Compiled Windows .exe
+│   └─ task-cli.exe
+│
 ├─ requirements.txt     # Python dependencies
 └─ README.md
 ```
@@ -200,7 +168,7 @@ task-manager/
 - Python 3.13+  
 - pytest >= 8.0.0  
 
-> All dependencies are listed in `requirements.txt` for easy installation.
+> All dependencies are listed in `requirements.txt`.
 
 ---
 
@@ -212,25 +180,26 @@ Open for contributions!
 - Fix bugs  
 - Improve CLI usability  
 
-Fork the repo, make changes, and submit a pull request.  
+Fork the repo, make changes, and submit a pull request.
 
 ---
 
 ## About the Author
 
 **Arshiya Bagheri** – Python developer & CLI enthusiast.  
+
 Skills demonstrated in this project:
 
 - Python CLI development  
 - File handling (JSON persistence)  
 - Unit testing with pytest  
-- Cross-platform terminal considerations  
+- Cross-platform terminal considerations
 
 ---
 
 ## Optional Enhancements
 
-For future improvements, you can:
+For future improvements:
 
 - Add **priority levels** for tasks  
 - Integrate **search functionality**  
