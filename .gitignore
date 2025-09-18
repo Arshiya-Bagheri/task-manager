@@ -1,0 +1,25 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+
+# Pytest cache
+.pytest_cache/
+
+# Distribution / packaging folders
+dist/
+build/
+*.egg-info/
+
+# Ignore PyInstaller spec file (if you use it for exe)
+*.spec
+
+# Ignore virtual environments (if you have one locally)
+venv/
+env/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore logs or temporary files
+*.log
