@@ -19,6 +19,7 @@ import os
 import sys
 import io
 import json
+from datetime import datetime
 
 # Force UTF-8 encoding for Windows console
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='ignore')
@@ -31,6 +32,10 @@ def safe_print(msg: str):
     if not USE_EMOJI:
         msg = msg.encode("ascii", "ignore").decode()
     print(msg)
+
+def current_local_time():
+    """Return current local time as a formatted string."""
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 class TaskManager:
     """A simple task manager that stores tasks in a JSON file."""
@@ -93,23 +98,24 @@ class TaskManager:
         print("  list done               Show only 'done' tasks\n")
 
     def add_task(self, description):
+        now = current_local_time()
         new_task = {
             "id": len(self.tasks) + 1,
             "description": description,
             "status": "todo",
-            "created_at": "",
-            "updated_at": "",
+            "created_at": now,
+            "updated_at": '',
         }
         self.tasks.append(new_task)
         self.save_tasks()
-        safe_print(f"✅ Task added successfully (ID: {new_task['id']})")
+        safe_print(f"✅ Task added successfully (ID: {new_task['id']}) at {now}")
 
     def update_task(self, task_id, description):
         for task in self.tasks:
             if task["id"] == task_id:
                 task["description"] = description
-                task["updated_at"] = ""
-                safe_print(f"✏️ Task {task_id} updated.")
+                task["updated_at"] = current_local_time()
+                safe_print(f"✏️ Task {task_id} updated at {task['updated_at']}.")
                 self.save_tasks()
                 return
         safe_print(f"⚠️ No task found with ID={task_id}")
@@ -127,8 +133,8 @@ class TaskManager:
         for task in self.tasks:
             if task["id"] == task_id:
                 task["status"] = status
-                task["updated_at"] = ""
-                safe_print(f"✅ Task {task_id} marked as {status}.")
+                task["updated_at"] = current_local_time()
+                safe_print(f"✅ Task {task_id} marked as {status} at {task['updated_at']}.")
                 self.save_tasks()
                 return
         safe_print(f"⚠️ No task found with ID={task_id}")
@@ -139,7 +145,7 @@ class TaskManager:
             safe_print("📂 No tasks found.")
             return
         for task in filtered:
-            print(f"[{task['id']}] {task['description']} - {task['status']}")
+            print(f"[{task['id']}] {task['description']} - {task['status']} (Created: {task['created_at']}, Updated: {task['updated_at']})")
 
     # ------------------------------------------------------------------
     # Interactive CLI Loop
@@ -211,3 +217,4 @@ class TaskManager:
 if __name__ == "__main__":
     cli = TaskManager()
     cli.run()
+
